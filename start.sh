@@ -30,7 +30,8 @@ URL=${CLASH_URL:?Error: CLASH_URL variable is not set or empty}
 # 获取 CLASH_SECRET 值，如果不存在则生成一个随机数
 Secret=${CLASH_SECRET:-$(openssl rand -hex 32)}
 
-
+echo "[CLASH_URL: $URL]"
+echo "[CLASH_Secret: $Secret]"
 
 #################### 函数定义 ####################
 

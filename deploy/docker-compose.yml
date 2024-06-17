@@ -1,0 +1,27 @@
+services:
+  zs.clash:
+    container_name: zs.clash
+    image: registry.cn-hangzhou.aliyuncs.com/coam/zs-clash:latest
+    environment:
+      TZ: Asia/Shanghai
+    command: /bin/bash -c "/app/start.sh; sleep infinity"
+    env_file:
+      - ${PROJECT_DIR}/deploy/.env
+    networks:
+      - zs_net
+    ports:
+      - 8809:7890
+      - 8810:9090
+    volumes:
+      - ${PROJECT_DIR}/conf:/app/conf
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "-v", "localhost", "9090" ]
+      start_period: 15s
+      interval: 10s
+      timeout: 10s
+      retries: 5
+networks:
+  # docker network
+  zs_net:
+    driver: bridge
