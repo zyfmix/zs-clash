@@ -10,8 +10,8 @@ services:
     networks:
       - zs_net
     ports:
-      - 8809:7890
-      - 8810:9090
+      - 8810:7890
+      - 8809:9090
     volumes:
       - ${PROJECT_DIR}/conf:/app/conf
     restart: unless-stopped
