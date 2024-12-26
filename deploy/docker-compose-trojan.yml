@@ -1,0 +1,54 @@
+services:
+  zs.nginx:
+    container_name: zs.nginx
+    image: nginx:latest
+    environment:
+      TZ: Asia/Shanghai
+    #command: /bin/bash -c "/app/start.sh; sleep infinity"
+    env_file:
+      - ${PROJECT_DIR}/deploy/.env.trojan
+    networks:
+      - zs_net
+    ports:
+      - 8043:8043
+      - 8080:8080
+    volumes:
+      - ${PROJECT_DIR}/etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /etc/ssl/certs/iirii.com:/etc/ssl/certs/iirii.com
+      - ${PROJECT_DIR}/resources/web:/usr/share/nginx/html
+    restart: unless-stopped
+    healthcheck:
+      test: curl --fail -s http://localhost:8080/health || exit 1
+      start_period: 15s
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  zs.trojan:
+    container_name: zs.trojan
+    image: teddysun/trojan-go:latest
+    environment:
+      TZ: Asia/Shanghai
+    #command: /bin/bash -c "/app/start.sh; sleep infinity"
+    env_file:
+      - ${PROJECT_DIR}/deploy/.env.trojan
+    networks:
+      - zs_net
+    ports:
+      - 8443:8443
+    volumes:
+      - ${PROJECT_DIR}/etc/trojan-go:/etc/trojan-go
+      - /etc/ssl/certs/iirii.com:/etc/ssl/certs/iirii.com
+    depends_on:
+      zs.nginx:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "-v", "localhost", "8443" ]
+      start_period: 15s
+      interval: 10s
+      timeout: 10s
+      retries: 5
+networks:
+  # docker network
+  zs_net:
+    driver: bridge

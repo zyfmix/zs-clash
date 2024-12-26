@@ -15,14 +15,14 @@ Case=${1:-restart}
 ebc_debug "解析命令参数> service.sh $Case"
 
 shopt -s expand_aliases
-alias dcs='docker-compose -f deploy/docker-compose.yml --env-file deploy/.env'
+alias dcs='docker-compose -f deploy/docker-compose-trojan.yml --env-file deploy/.env.trojan'
 
 # 根据命令执行不同的命令格式
 case "$Case" in
 help)
-  ebc_debug "说明: service.sh 命令快捷参数 [使用 docker-compose 管理 docker 服务(zs.clash)]"
-  ebc_debug "用法: service.sh <Case>"
-  ebc_debug "示例: service.sh restart"
+  ebc_debug "说明: trojan.sh 命令快捷参数 [使用 docker-compose 管理 docker 服务(zs.trojan)]"
+  ebc_debug "用法: trojan.sh <Case>"
+  ebc_debug "示例: trojan.sh restart"
   ;;
 restart)
   dcs down

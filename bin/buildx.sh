@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 set -xe
 
-# 脚本路径
 sc_dir="$(
   cd "$(dirname "$0")" >/dev/null 2>&1 || exit
   pwd -P
 )"
 
-# 去掉路径后缀
 rs_path=${sc_dir/zs-clash*/zs-clash}
 
-# 引入头文件
 source $rs_path/bin/libs/headers.sh
 
 #CPU_ARCH=linux/amd64,linux/arm64

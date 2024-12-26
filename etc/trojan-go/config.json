@@ -2,7 +2,7 @@
     "run_type": "server",
     "local_addr": "0.0.0.0",
     "local_port": 8443,
-    "remote_addr": "127.0.0.1",
+    "remote_addr": "zs.nginx",
     "remote_port": 8080,
     "log_level": 0,
     "password": [

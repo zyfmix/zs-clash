@@ -1,4 +1,14 @@
-# Trojan for linux
+# Trojan 教程
+
+[V2Ray、Trojan、XRay](https://www.chengxiaobai.com/essays/v2ray-trojan-xray)
+[Trojan 共用 443 端口方案](https://www.chengxiaobai.com/trouble-maker/trojan-shared-443-port-scheme)
+
+## 安装 docker
+
+```bash
+apt install docker.io
+
+```
 
 ## 签发域名证书
 
@@ -161,4 +171,45 @@ docker run -d --name trojan-go --network host --restart=always -v /etc/ssl/certs
         "idle_timeout": 60
     }
 }
+```
+
+## ClashX 连接 Trojan 服务器
+
+`/Users/coam/.config/clash/config.json` 配置文件
+
+```yaml
+#---------------------------------------------------#
+## 配置文件需要放置在 $HOME/.config/clash/*.yaml
+
+## 这份文件是clashX的基础配置文件，请尽量新建配置文件进行修改。
+## ！！！只有这份文件的端口设置会随ClashX启动生效,HTTP and SOCKS5端口会自动转换成mixed端口！
+
+## 如果您不知道如何操作，请参阅 官方Github文档 https://github.com/Dreamacro/clash/blob/dev/README.md
+#---------------------------------------------------#
+
+# (HTTP and SOCKS5 in one port)
+mixed-port: 7890
+# RESTful API for clash
+external-controller: 127.0.0.1:9090
+mode: rule
+
+proxies:
+- name: 当前网址：2.server.iirii.com
+  type: trojan
+  server: 2.server.iirii.com
+  port: 8443
+  password: oo123456
+  udp: false
+  sni: 2.server.iirii.com
+  skip-cert-verify: true
+
+proxy-groups:
+
+rules:
+  - DOMAIN-SUFFIX,google.com,DIRECT
+  - DOMAIN-KEYWORD,google,DIRECT
+  - DOMAIN,google.com,DIRECT
+  - DOMAIN-SUFFIX,ad.com,REJECT
+  - GEOIP,CN,DIRECT
+  - MATCH,DIRECT
 ```
