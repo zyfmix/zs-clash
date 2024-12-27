@@ -2,6 +2,8 @@
 
 [V2Ray、Trojan、XRay](https://www.chengxiaobai.com/essays/v2ray-trojan-xray)
 [Trojan 共用 443 端口方案](https://www.chengxiaobai.com/trouble-maker/trojan-shared-443-port-scheme)
+[Clash/ClashX规则，Clash/ClashX使用教程，解读Clash/ClashX配置文件，Trojan最好用的客户端软件。Clash已经支持Trojan！](https://v2rayssr.com/clashxx.html)
+[纯手动安装Trojan-go的配置文档](https://github.com/SusuDOS/SimpleConfigTrojan-Go/blob/master/Trojan-go%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8.md)
 
 ## 安装 docker
 
