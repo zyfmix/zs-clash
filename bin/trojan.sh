@@ -15,7 +15,7 @@ Case=${1:-restart}
 ebc_debug "解析命令参数> service.sh $Case"
 
 shopt -s expand_aliases
-alias dcs='docker-compose -f deploy/docker-compose-trojan.yml --env-file deploy/.env.trojan'
+alias dcs='docker-compose -f deploy/trojan/docker-compose.yml --env-file deploy/trojan/.env'
 
 # 根据命令执行不同的命令格式
 case "$Case" in

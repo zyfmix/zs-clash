@@ -6,7 +6,7 @@ services:
       TZ: Asia/Shanghai
     #command: /bin/bash -c "/app/start.sh; sleep infinity"
     env_file:
-      - ${PROJECT_DIR}/deploy/.env.trojan
+      - ${PROJECT_DIR}/deploy/trojan/.env
     networks:
       - zs_net
     ports:
@@ -30,7 +30,7 @@ services:
       TZ: Asia/Shanghai
     #command: /bin/bash -c "/app/start.sh; sleep infinity"
     env_file:
-      - ${PROJECT_DIR}/deploy/.env.trojan
+      - ${PROJECT_DIR}/deploy/trojan/.env
     networks:
       - zs_net
     ports:

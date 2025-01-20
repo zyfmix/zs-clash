@@ -27,15 +27,15 @@ reconfig)
   cp bin/clash.sh /etc/profile.d/clash.sh
  ;;
 info)
-  ebc_info "请访问: http://0.zus.iirii.com:8810/ui/"
+  ebc_info "请访问: http://0.wh.iirii.com:8810/ui/"
   cat conf/config.yaml | grep secret
  ;;
 export)
-  export https_proxy=http://0.zus.iirii.com:8809 http_proxy=http://0.zus.iirii.com:8809 all_proxy=socks5://0.zus.iirii.com:8809
+  export https_proxy=http://0.wh.iirii.com:8809 http_proxy=http://0.wh.iirii.com:8809 all_proxy=socks5://0.wh.iirii.com:8809
   ebc_debug "[http_proxy: $http_proxy][https_proxy: $https_proxy][all_proxy: $all_proxy]"
  ;;
 test)
-  export https_proxy=http://0.zus.iirii.com:8809 http_proxy=http://0.zus.iirii.com:8809 all_proxy=socks5://0.zus.iirii.com:8809
+  export https_proxy=http://0.wh.iirii.com:8809 http_proxy=http://0.wh.iirii.com:8809 all_proxy=socks5://0.wh.iirii.com:8809
   ebc_debug "[http_proxy: $http_proxy][https_proxy: $https_proxy][all_proxy: $all_proxy]"
   rm -rf _/*.tar.gz
   wget https://github.com/nushell/nushell/releases/download/0.94.2/nu-0.94.2-aarch64-apple-darwin.tar.gz -O _/nu-0.94.2-aarch64-apple-darwin.tar.gz

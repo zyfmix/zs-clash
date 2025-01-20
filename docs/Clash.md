@@ -50,8 +50,8 @@ wget https://github.com/nushell/nushell/releases/download/0.94.2/nu-0.94.2-aarch
 本地
 
 ```bash
-export https_proxy=http://0.zus.iirii.com:8809 http_proxy=http://0.zus.iirii.com:8809 all_proxy=socks5://0.zus.iirii.com:8809
+export https_proxy=http://0.wh.iirii.com:8809 http_proxy=http://0.wh.iirii.com:8809 all_proxy=socks5://0.wh.iirii.com:8809
 wget https://github.com/nushell/nushell/releases/download/0.94.2/nu-0.94.2-aarch64-apple-darwin.tar.gz
 ```
 
-访问: http://0.zus.iirii.com:8810/ui/#/proxies
+访问: http://0.wh.iirii.com:8810/ui/#/proxies
