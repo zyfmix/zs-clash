@@ -12,14 +12,14 @@ source $rs_path/bin/libs/headers.sh
 
 Case=${1:-help}
 
-ebc_debug "解析命令参数> run.sh $Case"
+ebc_debug "解析命令参数> test.sh $Case"
 
 # 根据命令执行不同的命令格式
 case "$Case" in
 help)
-  ebc_debug "说明: run.sh 命令快捷参数"
-  ebc_debug "用法: run.sh <Case>"
-  ebc_debug "示例: run.sh restart"
+  ebc_debug "说明: test.sh 命令快捷参数"
+  ebc_debug "用法: test.sh <Case>"
+  ebc_debug "示例: test.sh restart"
   ;;
 reconfig)
   ebc_info "说明: 同步 clash 配置"
