@@ -11,7 +11,7 @@
     "ssl": {
         "cert": "/etc/ssl/certs/iirii.com/fullchain.cer",
         "key": "/etc/ssl/certs/iirii.com/iirii.com.key",
-        "sni": "2.server.iirii.com"
+        "sni": "1.server.iirii.com"
     },
     "router": {
         "enabled": true,

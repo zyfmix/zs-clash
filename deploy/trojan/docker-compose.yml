@@ -23,12 +23,13 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-  zs.trojan:
-    container_name: zs.trojan
+  zs.trojan.server:
+    container_name: zs.trojan.server
     image: teddysun/trojan-go:latest
     environment:
       TZ: Asia/Shanghai
     #command: /bin/bash -c "/app/start.sh; sleep infinity"
+    entrypoint: /usr/bin/trojan-go -config /etc/trojan-go/server.json
     env_file:
       - ${PROJECT_DIR}/deploy/trojan/.env
     networks:
