@@ -4,7 +4,8 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/coam/zs-clash:latest
     environment:
       TZ: Asia/Shanghai
-    command: /bin/bash -c "/app/start.sh; sleep infinity"
+    #command: /bin/bash -c "/app/start.sh; sleep infinity"
+    command: /bin/bash -c "/app/bin/clash-linux-amd64 -d /app/conf &> /app/logs/clash.log"
     env_file:
       - ${PROJECT_DIR}/deploy/.env
     networks:

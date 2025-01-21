@@ -1,27 +1,40 @@
-#---------------------------------------------------#
-## 配置文件需要放置在 $HOME/.config/clash/*.yaml
+# HTTP 代理端口
+port: 7890 
 
-## 这份文件是clashX的基础配置文件，请尽量新建配置文件进行修改。
-## ！！！只有这份文件的端口设置会随ClashX启动生效,HTTP and SOCKS5端口会自动转换成mixed端口！
+# SOCKS5 代理端口
+socks-port: 7891 
 
-## 如果您不知道如何操作，请参阅 官方Github文档 https://github.com/Dreamacro/clash/blob/dev/README.md
-#---------------------------------------------------#
+# Linux 和 macOS 的 redir 代理端口
+redir-port: 7892 
 
-# (HTTP and SOCKS5 in one port)
-mixed-port: 7890
-# RESTful API for clash
-external-controller: 127.0.0.1:9090
+# 允许局域网的连接
+allow-lan: true
+
+# 规则模式：Rule（规则） / Global（全局代理）/ Direct（全局直连）
 mode: rule
 
+# 设置日志输出级别 (默认级别：silent，即不输出任何内容，以避免因日志内容过大而导致程序内存溢出）。
+# 5 个级别：silent / info / warning / error / debug。级别越高日志输出量越大，越倾向于调试，若需要请自行开启。
+log-level: debug
+# Clash 的 RESTful API
+external-controller: '0.0.0.0:9090'
+
+# RESTful API 的口令
+secret: a762a0a044956c8afd441eb37b74096acf19d24766f424967cd043976f0484d0
+
+# 您可以将静态网页资源（如 clash-dashboard）放置在一个目录中，clash 将会服务于 `RESTful API/ui`
+# 参数应填写配置目录的相对路径或绝对路径。
+external-ui: /app/dashboard/public
+
 proxies:
-- name: 当前网址：1.server.iirii.com
-  type: trojan
-  server: 1.server.iirii.com
-  port: 8443
-  password: oo123456
-  udp: false
-  sni: 1.server.iirii.com
-  skip-cert-verify: true
+  - name: 当前网址：1.server.iirii.com
+    type: trojan
+    server: 1.server.iirii.com
+    port: 8443
+    password: oo123456
+    udp: false
+    sni: 1.server.iirii.com
+    skip-cert-verify: true
 
 proxy-groups:
 

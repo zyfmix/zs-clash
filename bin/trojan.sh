@@ -24,6 +24,12 @@ help)
   ebc_debug "用法: trojan.sh <Case>"
   ebc_debug "示例: trojan.sh restart"
   ;;
+export)
+  export https_proxy=http://1.server.iirii.com:1080 http_proxy=http://1.server.iirii.com:1080 all_proxy=socks5://1.server.iirii.com:1080
+  ;;
+client)
+  ./bin/trojan-go -config etc/trojan-go/client.json
+  ;;
 restart)
   dcs down
 

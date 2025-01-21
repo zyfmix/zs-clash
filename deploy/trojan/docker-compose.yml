@@ -25,10 +25,9 @@ services:
       retries: 5
   zs.trojan.server:
     container_name: zs.trojan.server
-    image: teddysun/trojan-go:latest
+    image: teddysun/trojan-go:0.10.6
     environment:
       TZ: Asia/Shanghai
-    #command: /bin/bash -c "/app/start.sh; sleep infinity"
     entrypoint: /usr/bin/trojan-go -config /etc/trojan-go/server.json
     env_file:
       - ${PROJECT_DIR}/deploy/trojan/.env
@@ -37,6 +36,7 @@ services:
     ports:
       - 8443:8443
     volumes:
+      #- ${PROJECT_DIR}/bin/trojan-go:/usr/bin/trojan-go
       - ${PROJECT_DIR}/etc/trojan-go:/etc/trojan-go
       - /etc/ssl/certs/iirii.com:/etc/ssl/certs/iirii.com
     depends_on:
@@ -45,6 +45,35 @@ services:
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "nc", "-z", "-v", "localhost", "8443" ]
+      start_period: 15s
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  zs.trojan.client:
+    container_name: zs.trojan.client
+    image: teddysun/trojan-go:0.10.6
+    environment:
+      TZ: Asia/Shanghai
+    #entrypoint: /bin/bash -c "/app/start.sh; sleep infinity"
+    entrypoint: /bin/sh -c "sleep infinity"
+    #entrypoint: /usr/bin/trojan-go -config /etc/trojan-go/client.json
+    env_file:
+      - ${PROJECT_DIR}/deploy/trojan/.env
+    #network_mode: host
+    networks:
+      - zs_net
+    ports:
+      - 10800:1080
+    volumes:
+      #- ${PROJECT_DIR}/bin/trojan-go:/usr/bin/trojan-go
+      - ${PROJECT_DIR}/etc/trojan-go:/etc/trojan-go
+      - /etc/ssl/certs/iirii.com:/etc/ssl/certs/iirii.com
+    depends_on:
+      zs.trojan.server:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "-v", "localhost", "1080" ]
       start_period: 15s
       interval: 10s
       timeout: 10s
