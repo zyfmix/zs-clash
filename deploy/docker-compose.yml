@@ -15,6 +15,7 @@ services:
       - 8809:9090
     volumes:
       - ${PROJECT_DIR}/conf:/app/conf
+      - ${PROJECT_DIR}/logs:/app/logs
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "nc", "-z", "-v", "localhost", "9090" ]
