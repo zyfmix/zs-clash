@@ -11,18 +11,19 @@ redir-port: 7892
 allow-lan: true
 
 # 规则模式：Rule（规则） / Global（全局代理）/ Direct（全局直连）
-mode: rule
+mode: global
 
 # 设置日志输出级别 (默认级别：silent，即不输出任何内容，以避免因日志内容过大而导致程序内存溢出）。
 # 5 个级别：silent / info / warning / error / debug。级别越高日志输出量越大，越倾向于调试，若需要请自行开启。
 log-level: debug
-# Clash 的 RESTful API
+
+# Clash 的 RESTFUL API
 external-controller: '0.0.0.0:9090'
 
-# RESTful API 的口令
+# RESTFUL API 的口令
 secret: a762a0a044956c8afd441eb37b74096acf19d24766f424967cd043976f0484d0
 
-# 您可以将静态网页资源（如 clash-dashboard）放置在一个目录中，clash 将会服务于 `RESTful API/ui`
+# 您可以将静态网页资源（如 clash-dashboard）放置在一个目录中，clash 将会服务于 `RESTFUL API/ui`
 # 参数应填写配置目录的相对路径或绝对路径。
 external-ui: /app/dashboard/public
 
