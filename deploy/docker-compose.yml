@@ -11,8 +11,8 @@ services:
     networks:
       - zs_net
     ports:
-      - 8808:7890
-      - 8807:9090
+      - 8810:7890
+      - 8809:9090
     volumes:
       - ${PROJECT_DIR}/conf:/app/conf
       - ${PROJECT_DIR}/logs:/app/logs
